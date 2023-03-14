@@ -1,5 +1,6 @@
 const routers = require("express").Router();
 
-router.use("/auth", require("./authRoute"));
+routers.use("/auth", require("./authRoute"));
+routers.use("/message", require("./MessageRoute"));
 
 module.exports = routers

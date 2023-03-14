@@ -1,0 +1,82 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url("../image/bg.jpg");
+    background-position: center center;
+    background-size: cover;
+
+}
+
+.container {
+    width: 1000px;
+    margin: 30px auto;
+}
+
+.chat-body{
+    width: 100%;
+    display: flex;
+}
+
+.chat-left {
+    width: 30%;
+    height: 85vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    color: aliceblue;
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.2);
+    position: relative;
+    backdrop-filter: blur(5px);
+}
+
+.chat-right {
+    width: 70%;
+    height: 85vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0 20px 0 rgba(0,0,0,0.1);
+    position: relative;
+    color: aliceblue;
+    backdrop-filter: blur(5px);
+}
+
+.current-user {
+    position: absolute;
+    bottom: 0;
+}
+
+.send-message-div{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.box-message {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.messages {
+    padding: 20px;
+}
+
+.box-input input {
+    width: 600px;
+    border: 1px solid #111;
+    padding: 15px;
+    font-size: 18px;
+    outline: none;
+}
+
+.box-input button {
+    width: 100px;
+    padding: 15px;
+    border: 1px solid #111;
+    background-color: #111;
+    font-size: 18px;
+    color: #fff;
+}
