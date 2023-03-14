@@ -1,20 +1,32 @@
 const express = require("express");
-const path = require("path");
 const cors = require("cors");
 const app = express();
-app.use(cors());
+const socket = require("socket.io");
+const db_connection = require("./config/dbConfig");
+const routers = require("./router/routers");
 
 app.use((req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
 });
- 
 
-app.use(express.static(path.join(__dirname + "/public")));
+app.use(cors());
+app.use(express.json());
 
-const server = require("http").createServer(app);
+db_connection();
 
-const io = require("socket.io")(server);
+app.use(routers);
+
+const server = app.listen(5000, () => {
+  console.log("Sever listen on 5000 port");
+});
+
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:5173",
+    credentials: true,
+  }
+});
 
 io.on("connection", (socket) => {
   socket.on("newuser", (username) => {
@@ -28,8 +40,4 @@ io.on("connection", (socket) => {
   socket.on("chat", (message) => {
     socket.brodcast.emit("chat", message);
   });
-});
-
-app.listen(5000, () => {
-  console.log("Sever listen on 5000 port");
 });
