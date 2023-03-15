@@ -41,10 +41,9 @@ module.exports.register = async (req, res, next) => {
 
 module.exports.getAllUsers = async (req, res, next) => {
   try {
-    const users = await User.find({ _id: { $ne: req.params.id } }).select([
+    const users = await User.find({}).select([
       "email",
       "username",
-      "avatarImage",
       "_id",
     ]);
     return res.json(users);
@@ -52,6 +51,16 @@ module.exports.getAllUsers = async (req, res, next) => {
     next(ex);
   }
 };
+
+module.exports.getOneUser = async (req, res, next) => {
+  const {id} = req.params;
+  try {
+    const user = await User.findById(id).select("-isAvatarImageSet -avatarImage")
+    return res.json(user);
+  } catch (error) {
+    next(error)
+  }
+}
 
 module.exports.setAvatar = async (req, res, next) => {
   try {

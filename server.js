@@ -29,16 +29,16 @@ const io = socket(server, {
   }
 });
 
+global.onlineUser = new Map();
 io.on("connection", (socket) => {
   socket.on("newuser", (username) => {
-    socket.brodcast.emit("update", username);
+    onlineUser.set(username, socket.io);
   });
 
-  socket.on("exituser", (username) => {
-    socket.brodcast.emit("update", username + " left the conversation");
-  });
-
-  socket.on("chat", (message) => {
-    socket.brodcast.emit("chat", message);
+  socket.on("send-message", (message) => {
+    const sendMessage = onlineUser.get(message.to);
+    if (sendMessage) {
+      socket.to(sendMessage).emit("msg-recieve", message.msg);
+    }
   });
 });

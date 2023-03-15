@@ -6,7 +6,7 @@ Download
 pnpm install
 
 ```
-create .env file and enter =>
+create .env file and enter 
 
 `PORT and DB_URL`
 
@@ -17,9 +17,11 @@ pnpm install
 ```
 
 Run server 
+
 ```pnpm run start```
 
 
 Run client
+
 ```pnpm run dev```
 

@@ -32,7 +32,7 @@ body {
     backdrop-filter: blur(5px);
 }
 
-.chat-right {
+.chat-right, .select-not-user {
     width: 70%;
     height: 85vh;
     background-color: rgba(0, 0, 0, 0.4);
@@ -42,6 +42,12 @@ body {
     backdrop-filter: blur(5px);
 }
 
+.select-not-user {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
 .current-user {
     position: absolute;
     bottom: 0;
@@ -79,4 +85,36 @@ body {
     background-color: #111;
     font-size: 18px;
     color: #fff;
+}
+
+.chat-user {
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    margin: 10px 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.chat-user h3 {
+    padding-left: 10px;
+}
+
+.users {
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.chat-container {
+    width: 100%;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.3);
+    overflow: auto;
+    border-radius: 4px;
+    padding: 10px;
+}
+
+.chat-container::-webkit-scrollbar {
+    width: 6px;
+	background-color: #222;
 }
